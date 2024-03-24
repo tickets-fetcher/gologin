@@ -896,7 +896,7 @@ export class GoLogin {
         return params;
     }
 
-    async spawnBrowser() {
+    async spawnBrowser(options) {
         let {remote_debugging_port, customArgs} = this;
         if (!remote_debugging_port) {
             remote_debugging_port = await this.getRandomPort();
@@ -1456,10 +1456,11 @@ export class GoLogin {
         return {status: 'success', wsUrl};
     }
 
-    async startLocal() {
+    async startLocal(options={noProfile}) {
+        if(options.noProfile !== true)
         await this.createStartup(true);
         // await this.createBrowserExtension();
-        const wsUrl = await this.spawnBrowser();
+        const wsUrl = await this.spawnBrowser(options);
         this.setActive(true);
 
         return {status: 'success', wsUrl};
