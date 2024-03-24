@@ -465,7 +465,7 @@ export class GoLogin {
             }
 
             debug('FILE READY', this.profile_zip_path);
-            if (!profile_folder.length) {
+            if (!!profile_folder?.length) {
                 profile_folder = await this.emptyProfileFolder();
             }
 
