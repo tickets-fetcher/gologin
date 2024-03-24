@@ -1456,7 +1456,7 @@ export class GoLogin {
         return {status: 'success', wsUrl};
     }
 
-    async startLocal(options={noProfile}) {
+    async startLocal(options:{noProfile}) {
         if(options?.noProfile !== true)
         await this.createStartup(true);
         // await this.createBrowserExtension();
